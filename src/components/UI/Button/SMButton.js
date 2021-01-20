@@ -3,7 +3,7 @@ import { makeStyles, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    zIndex: 2000,
+    zIndex: 0,
     borderRadius: 50,
     backgroundColor: (props) => props.bgColor,
     color: "#ffffff",

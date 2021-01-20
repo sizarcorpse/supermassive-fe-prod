@@ -25,6 +25,7 @@ import {
   Typography,
   ListItemSecondaryAction,
   IconButton,
+  Box,
 } from "@material-ui/core";
 import ImageIcon from "@material-ui/icons/Image";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -34,7 +35,7 @@ import { motion } from "framer-motion";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 580,
+    // minWidth: 580,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -102,23 +103,26 @@ const NavCategories = (props) => {
           </Link>
         </motion.div>
       ))}
-      <Link href="#">
-        <ListItem className={localClasses.itemAlt}>
-          <ListItemText
-            primary={<Typography variant="h2">More Categories</Typography>}
-            secondary={
-              <Typography variant="h1">
-                Click here for more categories
-              </Typography>
-            }
-          />
-          <ListItemSecondaryAction>
-            <IconButton edge="end" size="small">
-              <ArrowForwardIcon fontSize="small" />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </Link>
+      <Box display="flex" alignItems="center">
+        {" "}
+        <Link href="#">
+          <ListItem className={localClasses.itemAlt}>
+            <ListItemText
+              primary={<Typography variant="h2">More Categories</Typography>}
+              secondary={
+                <Typography variant="h1">
+                  Click here for more categories
+                </Typography>
+              }
+            />
+            <ListItemSecondaryAction>
+              <IconButton edge="end" size="small">
+                <ArrowForwardIcon fontSize="small" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        </Link>
+      </Box>
     </List>
   );
 };

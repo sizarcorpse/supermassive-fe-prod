@@ -57,8 +57,17 @@ export const ThemeDistributor = (theme) => ({
       width: 580,
       height: 345,
       padding: 10,
-      marginTop: 40,
+      marginTop: 120,
       borderTop: "3px solid #fc415e",
+      "& .MuiMenu-list": {
+        width: "100%",
+      },
+      "& .MuiList-root": {
+        background: "#ffffff",
+      },
+      "& .MuiMenuItem-root": {
+        background: "#ffffff",
+      },
     },
   },
   // // Nav small

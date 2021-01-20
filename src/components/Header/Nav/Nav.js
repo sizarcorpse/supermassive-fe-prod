@@ -98,7 +98,7 @@ const Nav = (props) => {
                       open={Boolean(categoryMenuOpen)}
                       onClose={handleCategoryMenuClose}
                     >
-                      <MenuItem>
+                      <MenuItem disableRipple>
                         <NavCategories categories={categories} />
                       </MenuItem>
                     </Menu>

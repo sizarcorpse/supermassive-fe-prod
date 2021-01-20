@@ -70,18 +70,20 @@ const Home = (props) => {
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
       <Grid item xs={12}>
-        <Box
-          aria-label="all-post"
-          justifyContent="center"
-          className={classes.flexBox_root}
-        >
-          {_.shuffle(result).map((subset, i) => (
-            <Box className={classes.flexBox_column} key={i}>
-              {subset.map((post, i) => (
-                <PostsCard post={post} key={i} />
-              ))}
-            </Box>
-          ))}
+        <Box mx={5}>
+          <Box
+            aria-label="all-post"
+            justifyContent="center"
+            className={classes.flexBox_root}
+          >
+            {_.shuffle(result).map((subset, i) => (
+              <Box className={classes.flexBox_column} key={i}>
+                {subset.map((post, i) => (
+                  <PostsCard post={post} key={i} />
+                ))}
+              </Box>
+            ))}
+          </Box>
         </Box>
       </Grid>
     </Grid>
