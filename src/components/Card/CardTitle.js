@@ -26,7 +26,7 @@ const CardTitle = (props) => {
 
   return (
     <Box aria-label="title" mx={3} my={2}>
-      <Link href={`/post/${id}`}>
+      <Link href={`/posts/${slug}`}>
         <Typography variant="h3" style={{ cursor: "pointer" }}>
           {title}
         </Typography>

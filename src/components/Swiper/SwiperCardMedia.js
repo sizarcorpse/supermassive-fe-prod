@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 // #next :
 
 import Image from "next/image";
@@ -8,26 +7,24 @@ import Image from "next/image";
 
 // #hooks :
 import { MakeUrls } from "utils/MakeUrls";
+
 // #components :
-import CardPhotoSlider from "./CardPhotoSlider";
 
 // #validations :
 
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
-import { withStyles, Box } from "@material-ui/core";
+import { withStyles, makeStyles, Box } from "@material-ui/core";
 
 // #other :
 
-const CardMedia = (props) => {
-  const { cover, photos } = props;
+const SwiperCardMedia = (props) => {
+  const { cover } = props;
 
   return (
     <Box aria-label="card-header">
-      {photos.length > 0 ? (
-        <CardPhotoSlider photos={photos} />
-      ) : cover ? (
-        <Box aria-label="card-image">
+      {cover ? (
+        <Box aria-label="card-image" minHeight={361}>
           <Image
             src={MakeUrls(cover)}
             width={cover.width}
@@ -35,15 +32,14 @@ const CardMedia = (props) => {
           />
         </Box>
       ) : (
-        <Box aria-label="card-image" maxWidth={405} height={60}></Box>
+        <Box aria-label="card-image" maxWidth={"100%"} height={60}></Box>
       )}
     </Box>
   );
 };
 
-CardMedia.propTypes = {
+SwiperCardMedia.propTypes = {
   cover: PropTypes.object,
-  photos: PropTypes.array,
 };
 
 export default withStyles(
@@ -51,4 +47,4 @@ export default withStyles(
     ...ThemeDistributor(theme),
   }),
   { withTheme: true }
-)(CardMedia);
+)(SwiperCardMedia);

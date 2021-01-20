@@ -8,10 +8,11 @@ import { useRouter } from "next/router";
 // import Image from 'next/image';
 import useSWR, { trigger } from "swr";
 // #hooks :
-import { getAllPosts } from "actions/FetchPosts";
+import { getAllPosts, getEditorsChoicePost } from "actions/FetchPosts";
 // import { useFlexGrid } from "utils/useFlexGrid";
 // #components :
 import { PostsCard } from "components/Card";
+import SwiperRoot from "components/Swiper/Swiper";
 // #validations :
 
 // #material-ui :
@@ -40,16 +41,18 @@ const { publicRuntimeConfig } = getConfig();
 
 export async function getServerSideProps(context) {
   const posts = await getAllPosts({ context });
+  const editorChoices = await getEditorsChoicePost({ context });
 
   return {
     props: {
       posts,
+      editorChoices,
     },
   };
 }
 
 const Home = (props) => {
-  const { classes, posts, width } = props;
+  const { classes, posts, width, editorChoices } = props;
   const localClasses = useStyles();
 
   // const result = useFlexGrid(posts, posts.length / 4);
@@ -69,6 +72,11 @@ const Home = (props) => {
 
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
+      <Grid item xs={12}>
+        <Box display="flex" justifyContent="center" width="100%">
+          <SwiperRoot editorChoices={editorChoices} />
+        </Box>
+      </Grid>
       <Grid item xs={12}>
         <Box mx={5}>
           <Box

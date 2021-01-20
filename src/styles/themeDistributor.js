@@ -82,11 +82,11 @@ export const ThemeDistributor = (theme) => ({
   //   top: "24px",
   //   left: "7%",
   // },
-  // scui_swiper_card_details: {
-  //   position: "absolute",
-  //   bottom: "5%",
-  //   left: "5%",
-  // },
+  swiper_card_details: {
+    position: "absolute",
+    bottom: "5%",
+    left: "5%",
+  },
   // scui_card_reaction_menu: {
   //   "& .MuiMenu-paper": {
   //     borderRadius: 50,
@@ -121,11 +121,24 @@ export const ThemeDistributor = (theme) => ({
     },
   },
 
+  try2: {
+    "& p": {
+      fontSize: "15px",
+      letterSpacing: ".5px",
+      wordSpacing: "2px",
+      fontWeight: "300",
+      textDecoration: "none solid rgb(255, 255, 255)",
+      fontStyle: "normal",
+      fontVariant: "normal",
+      color: "#ecedee",
+    },
+  },
+
   try: {
-    maxWidth: 840,
+    maxWidth: 880,
     width: "100%",
     "& img": {
-      maxWidth: 840,
+      maxWidth: 880,
       width: "100%",
       height: "auto",
       justifySelf: "center",
