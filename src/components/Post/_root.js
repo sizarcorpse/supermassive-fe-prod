@@ -15,6 +15,8 @@ import PostAuthor from "./PostAuthor";
 import PostGallery from "./PostGallery";
 import PostDesc from "./PostDesc";
 import PostCategory from "./PostCategory";
+
+import { CreateComment } from "components/Comment";
 // #validations :
 
 // #material-ui :
@@ -26,6 +28,7 @@ import {
   Grid,
   CssBaseline,
   Box,
+  Divider,
 } from "@material-ui/core";
 
 // #other :
@@ -35,9 +38,7 @@ const useStyles = makeStyles({
 });
 
 const PostDetails = (props) => {
-  const { classes, post } = props;
-  // const { currentUser } = useAuth();
-  // const { publicRuntimeConfig } = getConfig();
+  const { post } = props;
   const localClasses = useStyles();
 
   return (
@@ -48,6 +49,7 @@ const PostDetails = (props) => {
           <Box aria-label="main-content" width="100%">
             <PostMedia cover={post.cover} />
             <PostTitle title={post.title} />
+
             <PostAuthor
               author={post.author}
               createdAt={post.createdAt}
@@ -57,8 +59,13 @@ const PostDetails = (props) => {
             {post.photos.length > 0 && <PostGallery gallery={post.photos} />}
 
             <PostDesc content={post.content} />
+            <Divider />
+            <PostCategory categories={post.categories} />
           </Box>
         </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <CreateComment />
       </Grid>
     </Grid>
   );

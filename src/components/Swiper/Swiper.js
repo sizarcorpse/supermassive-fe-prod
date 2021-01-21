@@ -10,6 +10,7 @@
 
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
+
 import { withStyles, Box, Typography } from "@material-ui/core";
 
 // #other :
@@ -25,11 +26,10 @@ const SwiperRoot = (props) => {
   const { editorChoices } = props;
 
   return (
-    <Box mx={6} maxWidth={1700} minHeight={361} width="100%">
+    <Box maxWidth={1700} minHeight={361} width="100%">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
       >
         {editorChoices.map((editorChoice, i) => (

@@ -20,6 +20,7 @@ import { CssBaseline, Button } from "@material-ui/core";
 import theme from "styles/theme";
 
 // #other :
+import "../styles/styles.css";
 
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";

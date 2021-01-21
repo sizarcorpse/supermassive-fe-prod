@@ -8,24 +8,13 @@ import {
   Typography,
   AppBar,
   Toolbar,
-  IconButton,
-  Button,
   Box,
   Hidden,
-  SvgIcon,
-  Tooltip,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
-
-import { Angry } from "assets/icons";
-import { Haha } from "assets/icons";
-import { Love } from "assets/icons";
-import { Sad } from "assets/icons";
-import { Wow } from "assets/icons";
-import { Like } from "assets/icons";
 
 const Head = (props) => {
   const { classes, closeMe, handleNavSmallModalClose } = props;

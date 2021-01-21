@@ -13,13 +13,14 @@ import { MakeUrls } from "utils/MakeUrls";
 // #validations :
 
 // #material-ui :
+import withWidth from "@material-ui/core/withWidth";
 import { ThemeDistributor } from "styles/ThemeDistributor";
 import { withStyles, makeStyles, Box } from "@material-ui/core";
 
 // #other :
 
 const SwiperCardMedia = (props) => {
-  const { cover } = props;
+  const { cover, width } = props;
 
   return (
     <Box aria-label="card-header">
@@ -27,8 +28,9 @@ const SwiperCardMedia = (props) => {
         <Box aria-label="card-image" minHeight={361}>
           <Image
             src={MakeUrls(cover)}
-            width={cover.width}
-            height={cover.height}
+            width={width === "xs" ? undefined : cover.width}
+            height={width === "xs" ? undefined : cover.height}
+            layout={width === "xs" ? "fill" : undefined}
           />
         </Box>
       ) : (
@@ -42,9 +44,11 @@ SwiperCardMedia.propTypes = {
   cover: PropTypes.object,
 };
 
-export default withStyles(
-  (theme) => ({
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(SwiperCardMedia);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(SwiperCardMedia)
+);

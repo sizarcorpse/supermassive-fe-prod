@@ -1,3 +1,4 @@
+import { useState } from "react";
 // #next :
 import getConfig from "next/config";
 // import {useRouter} from 'next/router';
@@ -29,6 +30,7 @@ import {
 } from "@material-ui/core";
 import ImageIcon from "@material-ui/icons/Image";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 // #other :
 import _ from "lodash";
 import { motion } from "framer-motion";
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
     margin: "4px 0",
   },
   itemAlt: {
-    flex: "0 0 50%",
+    flex: "0 0 45%",
     cursor: "pointer",
     "&:hover": {
       color: "#fc415e",
@@ -61,9 +63,10 @@ const useStyles = makeStyles({
 });
 
 const NavCategories = (props) => {
-  const { classes, categories } = props;
+  const { classes, categories, lessMe } = props;
   const { publicRuntimeConfig } = getConfig();
   const localClasses = useStyles();
+  const [showCat, setShowCat] = useState(7);
 
   const variants = {
     hidden: { opacity: 1, backgroundColor: "#ffffff" },
@@ -72,7 +75,7 @@ const NavCategories = (props) => {
 
   return (
     <List className={localClasses.root}>
-      {_.slice(categories, 0, 7).map((category, i) => (
+      {_.slice(categories, 0, showCat).map((category, i) => (
         <motion.div
           initial={variants.hidden}
           whileHover={variants.visible}
@@ -103,16 +106,24 @@ const NavCategories = (props) => {
           </Link>
         </motion.div>
       ))}
-      <Box display="flex" alignItems="center">
-        {" "}
-        <Link href="#">
-          <ListItem className={localClasses.itemAlt}>
+      <Box
+        display="flex"
+        alignItems="center"
+        style={{ backgroundColor: "#ffffff" }}
+      >
+        {showCat !== undefined && lessMe === true ? (
+          <ListItem
+            className={localClasses.itemAlt}
+            onClick={() => {
+              setShowCat(undefined);
+            }}
+          >
             <ListItemText
-              primary={<Typography variant="h2">More Categories</Typography>}
+              primary={
+                <Typography variant="h2">Show More Categories</Typography>
+              }
               secondary={
-                <Typography variant="h1">
-                  Click here for more categories
-                </Typography>
+                <Typography variant="h1">Click here for more</Typography>
               }
             />
             <ListItemSecondaryAction>
@@ -121,7 +132,37 @@ const NavCategories = (props) => {
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
-        </Link>
+        ) : showCat === undefined && lessMe === true ? (
+          <ListItem
+            className={localClasses.itemAlt}
+            onClick={() => {
+              setShowCat(7);
+            }}
+          >
+            <ListItemText
+              primary={<Typography variant="h2">Less Categories</Typography>}
+            />
+            <ListItemSecondaryAction>
+              <IconButton edge="start" size="small">
+                <ArrowBackIcon fontSize="small" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        ) : (
+          <ListItem className={localClasses.itemAlt}>
+            <ListItemText
+              primary={<Typography variant="h2">More Categories</Typography>}
+              secondary={
+                <Typography variant="h1">Click here for more</Typography>
+              }
+            />
+            <ListItemSecondaryAction>
+              <IconButton edge="end" size="small">
+                <ArrowForwardIcon fontSize="small" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        )}
       </Box>
     </List>
   );

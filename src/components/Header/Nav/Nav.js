@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// import NavSmall from "./NavSmall";
+import NavMobile from "./NavMobile";
 import NavCategories from "./NavCategories";
 
 import { ThemeDistributor } from "styles/ThemeDistributor";
@@ -22,8 +22,8 @@ import {
   Modal,
   Fade,
   Backdrop,
-  MenuList,
 } from "@material-ui/core";
+
 import MenuIcon from "@material-ui/icons/Menu";
 const Nav = (props) => {
   const { classes, categories } = props;
@@ -38,7 +38,7 @@ const Nav = (props) => {
     setCategoryMenuOpen(null);
   };
 
-  // #action modal
+  // #action : modal
   const [navSmallModalOpen, setNavSmallModalOpen] = useState(false);
 
   const handleNavSmallModalOpen = () => {
@@ -112,7 +112,7 @@ const Nav = (props) => {
                           color="primary"
                           className={classes.nav_onHover}
                         >
-                          Post by Reaction
+                          Popular
                         </Typography>
                       </Link>
                     </Box>
@@ -190,11 +190,10 @@ const Nav = (props) => {
                     timeout: 500,
                   }}
                 >
-                  <Fade in={navSmallModalOpen}>
-                    {/* <NavSmall
-                      handleNavSmallModalClose={handleNavSmallModalClose}
-                    /> */}
-                  </Fade>
+                  <NavMobile
+                    handleNavSmallModalClose={handleNavSmallModalClose}
+                    categories={categories}
+                  />
                 </Modal>
               </Box>
             </Grid>

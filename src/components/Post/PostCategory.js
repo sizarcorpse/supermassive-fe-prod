@@ -1,10 +1,11 @@
 // #next :
 
-// import Image from 'next/image';
+import Link from "next/link";
 
 // #contexts :
 
 // #hooks :
+import { SMButton } from "components/UI";
 
 // #components :
 
@@ -12,7 +13,7 @@
 
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
-import { withStyles, makeStyles } from "@material-ui/core";
+import { withStyles, makeStyles, Typography, Box } from "@material-ui/core";
 
 // #other :
 
@@ -21,11 +22,27 @@ const useStyles = makeStyles({
 });
 
 const PostCategory = (props) => {
-  const { classes } = props;
+  const { categories } = props;
 
   const localClasses = useStyles();
 
-  return <> null</>;
+  return (
+    <Box
+      aria-label="category-button"
+      display="flex"
+      alignItems="center"
+      my={4}
+      mx={4}
+    >
+      {categories.map((category, i) => (
+        <Box key={i} mx={1}>
+          <Link href={`/category/${category.name}`}>
+            <SMButton>{category.name}</SMButton>
+          </Link>
+        </Box>
+      ))}
+    </Box>
+  );
 };
 export default withStyles(
   (theme) => ({

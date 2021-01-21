@@ -39,6 +39,7 @@ const PostAuthor = (props) => {
       justifyContent="flex-start"
       alignItems="center"
       mx={4}
+      my={2}
     >
       <Box display="flex" alignItems="center" mr={1}>
         <Avatar style={{ verticalAlign: "top" }}>

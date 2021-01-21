@@ -101,7 +101,15 @@ const theme = createMuiTheme({
       textTransform: "capitalize",
       textDecoration: "none",
     },
-    caption: {},
+    caption: {
+      fontSize: "1.7em",
+      fontWeight: 500,
+      fontStyle: "normal",
+      fontVariant: "normal",
+      wordSpacing: "1px",
+      lineHeight: "1",
+      color: "#f1eeee",
+    },
     overline: {},
   },
 });

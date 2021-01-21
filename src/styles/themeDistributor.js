@@ -87,13 +87,6 @@ export const ThemeDistributor = (theme) => ({
     bottom: "5%",
     left: "5%",
   },
-  // scui_card_reaction_menu: {
-  //   "& .MuiMenu-paper": {
-  //     borderRadius: 50,
-  //     padding: theme.spacing(0, 1),
-  //     marginTop: theme.spacing(-6),
-  //   },
-  // },
 
   // #home page
 
@@ -110,7 +103,13 @@ export const ThemeDistributor = (theme) => ({
     [theme.breakpoints.down("sm")]: {
       flex: "50%",
     },
+    [theme.breakpoints.up("sm")]: {
+      flex: "33%",
+    },
     [theme.breakpoints.down("md")]: {
+      flex: "33%",
+    },
+    [theme.breakpoints.up("md")]: {
       flex: "33%",
     },
     [theme.breakpoints.up("lg")]: {
@@ -135,10 +134,11 @@ export const ThemeDistributor = (theme) => ({
   },
 
   try: {
-    maxWidth: 880,
+    // maxWidth: 880,
     width: "100%",
+
     "& img": {
-      maxWidth: 880,
+      // maxWidth: 880,
       width: "100%",
       height: "auto",
       justifySelf: "center",
@@ -165,19 +165,20 @@ export const ThemeDistributor = (theme) => ({
       color: "#6459ff",
     },
   },
-  // ScuiTextAreaLarge: {
-  //   width: "100%",
-  //   maxHeight: 400,
-  //   fontSize: 15,
-  //   border: "1px solid #d3d1d1)",
-  //   borderRadius: 5,
-  //   background: "rgba(232,232,232,0.3)",
-  //   padding: 24,
-  // },
-  // PostButton: {
-  //   borderRadius: 0,
-  //   height: 50,
-  //   width: 200,
-  //   background: "#a1a1a3",
-  // },
+
+  TextAreaLarge: {
+    width: "100%",
+    maxHeight: 400,
+    fontSize: 15,
+    border: "1px solid #d3d1d1)",
+    borderRadius: 5,
+    background: "rgba(232,232,232,0.3)",
+    padding: 24,
+  },
+  CommentButton: {
+    borderRadius: 0,
+    height: 50,
+    width: 200,
+    background: "#a1a1a3",
+  },
 });

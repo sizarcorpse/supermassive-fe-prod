@@ -1,0 +1,43 @@
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+  margin: 24px 96px;
+}
+.my-masonry-grid_column {
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 700px) {
+  .my-masonry-grid {
+    margin: 24px 8px;
+  }
+}
+@media (max-width: 1100px) {
+  .my-masonry-grid {
+    margin: 24px 24px;
+  }
+}
+@media (max-width: 1500px) {
+  .my-masonry-grid {
+    margin: 24px 64px;
+  }
+}
+
+.script-bf-box {
+  width: 10px;
+  height: 30px;
+  background: black;
+  margin: 5px;
+  will-change: transform;
+}
+
+.script-bf-box:hover {
+  background: hotpink;
+}
