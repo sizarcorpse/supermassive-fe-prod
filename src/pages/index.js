@@ -86,7 +86,7 @@ const Home = (props) => {
 
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
-      <Grid item xs={12} className={classes.demo}>
+      <Grid item xs={12}>
         <Box style={{ display: "flex", justifyContent: "center" }}>
           <SwiperRoot editorChoices={editorChoices} />
         </Box>
