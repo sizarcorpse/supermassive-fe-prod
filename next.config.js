@@ -7,7 +7,7 @@ module.exports = {
   },
 
   images: {
-    domains: ["localhost"],
+    domains: ["sc-supermassive.s3.amazonaws.com", "localhost"],
   },
   webpack: (config) => {
     config.resolve.alias["components"] = path.join(
