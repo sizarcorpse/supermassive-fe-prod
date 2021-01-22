@@ -14,7 +14,7 @@ import { PostDetails } from "components/Post";
 // #validations :
 
 // #material-ui :
-import { ThemeDistributor } from "styles/ThemeDistributor";
+import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
 import { withStyles, makeStyles, Grid, Box, Card } from "@material-ui/core";
 
 // #other :

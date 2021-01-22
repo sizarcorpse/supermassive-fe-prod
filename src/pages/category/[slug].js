@@ -16,7 +16,7 @@ import { PostsCard } from "components/Card";
 import SwiperRoot from "components/Swiper/Swiper";
 
 // #material-ui :
-import { ThemeDistributor } from "styles/ThemeDistributor";
+import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
 import {
   withStyles,
   makeStyles,

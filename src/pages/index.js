@@ -17,7 +17,7 @@ import SwiperRoot from "components/Swiper/Swiper";
 // #validations :
 
 // #material-ui :
-import { ThemeDistributor } from "styles/ThemeDistributor";
+import { ThemeDistributor } from "../styles/ThemeDistributor.js";
 import {
   withStyles,
   makeStyles,
