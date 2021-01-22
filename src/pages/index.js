@@ -87,9 +87,11 @@ const Home = (props) => {
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
       <Grid item xs={12}>
-        <Box style={{ display: "flex", justifyContent: "center" }}>
-          <SwiperRoot editorChoices={editorChoices} />
-        </Box>
+        {editorChoices || editorChoices.length > 0 ? (
+          <Box style={{ display: "flex", justifyContent: "center" }}>
+            <SwiperRoot editorChoices={editorChoices} />
+          </Box>
+        ) : null}
       </Grid>
       <Grid item xs={12}>
         <Masonry
