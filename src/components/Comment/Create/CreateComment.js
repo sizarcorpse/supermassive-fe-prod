@@ -52,7 +52,6 @@ const CreateComment = (props) => {
                 placeholder="Give me a nice cool review. (max 500 words)"
                 name="commentBody"
                 variant="outlined"
-                fullWidth
                 id="commentBody"
               />
             </FormControl>

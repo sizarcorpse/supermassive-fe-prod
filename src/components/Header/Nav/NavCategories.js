@@ -27,6 +27,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
   Box,
+  MenuItem,
 } from "@material-ui/core";
 import ImageIcon from "@material-ui/icons/Image";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -63,7 +64,7 @@ const useStyles = makeStyles({
 });
 
 const NavCategories = (props) => {
-  const { classes, categories, lessMe } = props;
+  const { classes, categories, lessMe, handleNavSmallModalClose } = props;
   const { publicRuntimeConfig } = getConfig();
   const localClasses = useStyles();
   const [showCat, setShowCat] = useState(7);
@@ -141,6 +142,9 @@ const NavCategories = (props) => {
           >
             <ListItemText
               primary={<Typography variant="h2">Less Categories</Typography>}
+              secondary={
+                <Typography variant="h1">Click here for less</Typography>
+              }
             />
             <ListItemSecondaryAction>
               <IconButton edge="start" size="small">

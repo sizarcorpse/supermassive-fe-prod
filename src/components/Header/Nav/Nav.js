@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -23,10 +23,11 @@ import {
   Fade,
   Backdrop,
 } from "@material-ui/core";
-
+import FreeBreakfastIcon from "@material-ui/icons/FreeBreakfast";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import MenuIcon from "@material-ui/icons/Menu";
 const Nav = (props) => {
-  const { classes, categories } = props;
+  const { classes, categories, width } = props;
 
   // #action : category menu
   const [categoryMenuOpen, setCategoryMenuOpen] = useState(null);
@@ -49,6 +50,13 @@ const Nav = (props) => {
     setNavSmallModalOpen(false);
   };
 
+  // #handlers : mobileSmallModalClosed on size
+  useEffect(() => {
+    if (width === "lg") {
+      setNavSmallModalOpen(false);
+    }
+  }, [width]);
+
   return (
     <Grid container component="main">
       <CssBaseline />
@@ -57,9 +65,7 @@ const Nav = (props) => {
           <Toolbar className={classes.nav_toolBar}>
             <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>
               <Box display="flex" justifyContent="center">
-                <Typography variant="h6" color="primary">
-                  suppermassive
-                </Typography>
+                <FreeBreakfastIcon color="primary" />
               </Box>
             </Grid>
 
@@ -98,13 +104,16 @@ const Nav = (props) => {
                       open={Boolean(categoryMenuOpen)}
                       onClose={handleCategoryMenuClose}
                     >
-                      <MenuItem disableRipple>
-                        <NavCategories categories={categories} />
+                      <MenuItem disableRipple onClick={handleCategoryMenuClose}>
+                        <NavCategories
+                          categories={categories}
+                          handleNavSmallModalClose={handleNavSmallModalClose}
+                        />
                       </MenuItem>
                     </Menu>
                     <Box m={2}>
                       <Link
-                        href="/"
+                        href="/popular"
                         className={classes.scui_link_underline_remove}
                       >
                         <Typography
@@ -118,7 +127,7 @@ const Nav = (props) => {
                     </Box>
                     <Box m={2}>
                       <Link
-                        href="/"
+                        href="/featured"
                         className={classes.scui_link_underline_remove}
                       >
                         <Typography
@@ -126,7 +135,7 @@ const Nav = (props) => {
                           color="primary"
                           className={classes.nav_onHover}
                         >
-                          Archive
+                          Featured
                         </Typography>
                       </Link>
                     </Box>
@@ -140,7 +149,7 @@ const Nav = (props) => {
                           color="primary"
                           className={classes.nav_onHover}
                         >
-                          Sample Page
+                          About
                         </Typography>
                       </Link>
                     </Box>
@@ -199,9 +208,13 @@ const Nav = (props) => {
             </Grid>
 
             <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>
-              <Box display="flex" justifyContent="center" alignItems="center">
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                alignItems="center"
+              >
                 <Box display="flex" alignItems="center" mx={2}>
-                  <Avatar src="https://w.wallhaven.cc/full/j3/wallhaven-j38xpq.jpg"></Avatar>
+                  <Avatar>S</Avatar>
                 </Box>
                 <Box display="flex" alignItems="center">
                   <Typography variant="h1" color="primary">
@@ -217,9 +230,11 @@ const Nav = (props) => {
   );
 };
 
-export default withStyles(
-  (theme) => ({
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(Nav);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(Nav)
+);

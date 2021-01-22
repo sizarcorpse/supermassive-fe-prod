@@ -37,7 +37,7 @@ import FiberNewIcon from "@material-ui/icons/FiberNew";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
 import HelpIcon from "@material-ui/icons/Help";
 import InfoIcon from "@material-ui/icons/Info";
-import ArchiveIcon from "@material-ui/icons/Archive";
+import FilterVintageIcon from "@material-ui/icons/FilterVintage";
 // #other :
 
 const useStyles = makeStyles({
@@ -55,8 +55,14 @@ const NavMobile = (props) => {
     {
       name: "Popular Content",
       icon: <FiberNewIcon />,
-      url: "/latest",
+      url: "/popular",
       hint: "Explore popular content",
+    },
+    {
+      name: "Featured",
+      icon: <FilterVintageIcon />,
+      url: "/featured",
+      hint: "Featured & Editor choice",
     },
     {
       name: "About",
@@ -91,7 +97,7 @@ const NavMobile = (props) => {
             </Typography>
           </Box>
 
-          <Box height={320}>
+          <Box height={370}>
             <List>
               {navigation.map((item, i) => (
                 <Link href={`${item.url}`} key={i}>

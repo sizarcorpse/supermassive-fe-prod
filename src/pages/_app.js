@@ -11,6 +11,7 @@ import getConfig from "next/config";
 
 // #components :
 import { Header } from "components/Header";
+import { Footer } from "components/Footer";
 // #validations :
 
 // #material-ui :
@@ -26,6 +27,21 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
+
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+NProgress.configure({
+  showSpinner: false,
+});
+Router.events.on("routeChangeStart", () => {
+  NProgress.start();
+});
+Router.events.on("routeChangeComplete", () => {
+  NProgress.done();
+});
+Router.events.on("routeChangeError", () => {
+  NProgress.done();
+});
 
 function MyApp({ Component, pageProps, categories }) {
   return (
@@ -47,6 +63,7 @@ function MyApp({ Component, pageProps, categories }) {
         >
           <Header categories={categories} />
           <Component {...pageProps} />
+          <Footer />
         </SWRConfig>
       </ThemeProvider>
     </>

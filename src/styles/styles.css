@@ -14,9 +14,9 @@
   margin-bottom: 24px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1500px) {
   .my-masonry-grid {
-    margin: 24px 8px;
+    margin: 24px 64px;
   }
 }
 @media (max-width: 1100px) {
@@ -24,20 +24,18 @@
     margin: 24px 24px;
   }
 }
-@media (max-width: 1500px) {
+@media (max-width: 700px) {
   .my-masonry-grid {
-    margin: 24px 64px;
+    margin: 24px 8px;
   }
 }
-
-.script-bf-box {
-  width: 10px;
-  height: 30px;
-  background: black;
-  margin: 5px;
-  will-change: transform;
+@media (min-width: 600) {
+  .my-masonry-grid {
+    margin: 24px 0px;
+  }
 }
-
-.script-bf-box:hover {
-  background: hotpink;
+@media (min-width: 400) {
+  .my-masonry-grid {
+    margin: 24px 0px;
+  }
 }

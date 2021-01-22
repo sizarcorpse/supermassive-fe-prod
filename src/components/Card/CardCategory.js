@@ -37,11 +37,11 @@ const CardCategory = (props) => {
       className={localClasses.root}
     >
       {categories.map((category, i) => (
-        <Box key={i} mr={1}>
+        <Box key={i} mr={1} style={{ zIndex: 100 }}>
           <SMButton>
             <Link
               href={{
-                pathname: `/category/${category.name}`,
+                pathname: `/category/${category.slug}`,
               }}
             >
               <Typography variant="button" style={{ fontSize: 13 }}>

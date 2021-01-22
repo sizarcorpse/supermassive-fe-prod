@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 // #next :
 import getConfig from "next/config";
 // import {useRouter} from 'next/router';
@@ -34,6 +35,10 @@ const useStyles = makeStyles({
 const Post = (props) => {
   const { classes, post } = props;
   const localClasses = useStyles();
+
+  useEffect(() => {
+    fetch(`http://localhost:1337/posts/${post._id}/views`, { method: "PATCH" });
+  }, []);
 
   return (
     <Grid

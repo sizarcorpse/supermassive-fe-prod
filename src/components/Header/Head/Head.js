@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
-
+import { getDay, setDay, format } from "date-fns";
 const Head = (props) => {
   const { classes, closeMe, handleNavSmallModalClose } = props;
   const router = useRouter();
@@ -42,7 +42,7 @@ const Head = (props) => {
                   />
 
                   <Typography variant="h1" color="primary">
-                    Wednesday, December 23
+                    {format(new Date(), "iiii, MMMM dd")}
                   </Typography>
                 </Box>
               </Grid>
