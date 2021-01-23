@@ -137,7 +137,7 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link href="/" className={classes.link_underline_remove}>
+                      <Link href="/about" className={classes.link_underline_remove}>
                         <Typography
                           variant="h2"
                           color="primary"
@@ -148,7 +148,7 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link href="/" className={classes.link_underline_remove}>
+                      <Link href="/contact" className={classes.link_underline_remove}>
                         <Typography
                           variant="h2"
                           color="primary"
@@ -180,22 +180,24 @@ const Nav = (props) => {
                     <MenuIcon />
                   </IconButton>
                 </Box>
-                <Modal
-                  className={classes.modal}
-                  open={navSmallModalOpen}
-                  onClose={handleNavSmallModalClose}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
+              </Box>
+              <Modal
+                className={classes.modal}
+                open={navSmallModalOpen}
+                onClose={handleNavSmallModalClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={navSmallModalOpen}>
                   <NavMobile
                     handleNavSmallModalClose={handleNavSmallModalClose}
                     categories={categories}
                   />
-                </Modal>
-              </Box>
+                </Fade>
+              </Modal>
             </Grid>
 
             <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>

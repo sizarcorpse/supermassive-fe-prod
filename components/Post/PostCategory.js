@@ -36,9 +36,13 @@ const PostCategory = (props) => {
     >
       {categories.map((category, i) => (
         <Box key={i} mx={1}>
-          <Link href={`/category/${category.name}`}>
-            <SMButton>{category.name}</SMButton>
-          </Link>
+          <SMButton>
+            <Link href={`/category/${category.slug}`}>
+              <Typography variant="button" style={{ fontSize: 13 }}>
+                {category.name}
+              </Typography>
+            </Link>
+          </SMButton>
         </Box>
       ))}
     </Box>

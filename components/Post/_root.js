@@ -34,7 +34,7 @@ import {
 // #other :
 
 const useStyles = makeStyles({
-  card: { margin: "0px 24px" },
+  card: { margin: "0px 016px" },
 });
 
 const PostDetails = (props) => {

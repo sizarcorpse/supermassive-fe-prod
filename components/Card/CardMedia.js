@@ -46,6 +46,8 @@ CardMedia.propTypes = {
   photos: PropTypes.array,
 };
 
+CardMedia.defaultProps = { photos: [] };
+
 export default withStyles(
   (theme) => ({
     ...ThemeDistributor(theme),

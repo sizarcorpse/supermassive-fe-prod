@@ -24,6 +24,7 @@ const Head = (props) => {
   return (
     <Grid container component="main">
       <CssBaseline />
+
       <Box mx={4} width="100%">
         <AppBar position="static" className={classes.head_appBar} elevation={0}>
           <Toolbar className={classes.head_toolBar}>
@@ -51,8 +52,8 @@ const Head = (props) => {
             </Hidden>
             <Grid
               item
-              xs={6}
-              sm={4}
+              xs={closeMe ? false : 3}
+              sm={1}
               md={7}
               lg={7}
               xl={8}
@@ -82,7 +83,7 @@ const Head = (props) => {
               </Box>
             </Grid>
 
-            <Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
+            <Grid item xs={closeMe ? 12 : 9} sm={6} md={3} lg={3} xl={2}>
               <Box
                 display="flex"
                 justifyContent="flex-start"
@@ -90,14 +91,24 @@ const Head = (props) => {
                 p={1}
               >
                 {closeMe === true ? (
-                  <CloseIcon
-                    color="primary"
-                    onClick={() => {
-                      handleNavSmallModalClose(false);
-                    }}
-                  />
+                  <Box display="flex" width="100%">
+                    <Box flexGrow={1}>
+                      <Search
+                        handleNavSmallModalClose={handleNavSmallModalClose}
+                        closeMe={true}
+                      />
+                    </Box>
+                    <CloseIcon
+                      color="primary"
+                      onClick={() => {
+                        handleNavSmallModalClose(false);
+                      }}
+                    />
+                  </Box>
                 ) : (
-                  <Search />
+                  <Box display="flex" width="100%" justifyContent="start">
+                    <Search />
+                  </Box>
                 )}
               </Box>
             </Grid>

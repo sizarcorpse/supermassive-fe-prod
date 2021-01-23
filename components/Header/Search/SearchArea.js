@@ -129,7 +129,7 @@ const SearchArea = (props) => {
   return (
     <Grid container className={localClasses.container}>
       <CssBaseline />
-      <Grid xl={4} lg={4} md={3} sm={2} xs={false} />
+      <Grid item xl={4} lg={4} md={3} sm={2} xs={false} />
       <Grid item xl={4} lg={6} md={6} sm={8} xs={12}>
         <Box
           width="100%"
@@ -217,8 +217,8 @@ const SearchArea = (props) => {
           </Box>
         </Box>
       </Grid>
-      <Grid xl={4} lg={4} md={3} sm={2} xs={false} />
-      <Grid item xs={12}>
+      <Grid item xl={4} lg={4} md={3} sm={2} xs={false} />
+      <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
         <Box
           width="100%"
           display="flex"

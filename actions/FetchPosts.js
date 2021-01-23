@@ -77,3 +77,14 @@ export const getPostsBySearch = async ({ context }) => {
 
   return data;
 };
+
+export const getAllCategories = async ({ context }) => {
+  const { publicRuntimeConfig } = getConfig();
+  const slug = context.query.slug;
+  const response = await fetch(
+    `${publicRuntimeConfig.ROOT_API_URL}/categories/list`
+  );
+  const data = await response.json();
+
+  return data;
+};

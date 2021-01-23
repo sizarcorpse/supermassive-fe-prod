@@ -8,13 +8,18 @@ import getConfig from "next/config";
 // #contexts :
 
 // #hooks :
-import { getASinglePost } from "actions/FetchPosts";
+import {
+  getASinglePost,
+  getAllCategories,
+  getPostsByFeatured,
+} from "actions/FetchPosts";
 // #components :
 import { PostDetails } from "components/Post";
+import { CategoryBar, FeaturedBar } from "components/PostSideBar";
 // #validations :
 
 // #material-ui :
-import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
+import { ThemeDistributor } from "styles/ThemeDistributor.js";
 import { withStyles, makeStyles, Grid, Box, Card } from "@material-ui/core";
 
 // #other :
@@ -23,8 +28,10 @@ import { withStyles, makeStyles, Grid, Box, Card } from "@material-ui/core";
 export async function getServerSideProps(context) {
   const slug = context.query.slug;
   const post = await getASinglePost({ context: context, slug: slug });
+  const categories = await getAllCategories({ context });
+  const posts = await getPostsByFeatured({ context });
   return {
-    props: { post },
+    props: { post, categories, posts },
   };
 }
 
@@ -33,7 +40,7 @@ const useStyles = makeStyles({
 });
 
 const Post = (props) => {
-  const { classes, post } = props;
+  const { classes, post, categories, posts } = props;
   const localClasses = useStyles();
 
   useEffect(() => {
@@ -47,14 +54,17 @@ const Post = (props) => {
       style={{ backgroundColor: "#f9f7f7", display: "flex" }}
     >
       <Grid item xs={false} sm={false} md={false} lg={false} xl={1} />
-      <Grid item xl={6} lg={8} md={7} sm={12} xs={12}>
+      <Grid item xl={6} lg={7} md={7} sm={12} xs={12}>
         <Box width="100%" height="100%">
           <PostDetails post={post} />
         </Box>
       </Grid>
-      <Grid item xl={4} lg={4} md={5} sm={12} xs={12}>
+      <Grid item xl={4} lg={5} md={5} sm={12} xs={12}>
         <Box width="100%" display="flex" justifyContent="center" mb={5}>
-          <Card>{/* <Reactions postx={post} /> */}</Card>
+          <CategoryBar categories={categories} />
+        </Box>
+        <Box width="100%" display="flex" justifyContent="center" mb={5}>
+          <FeaturedBar posts={posts} />
         </Box>
       </Grid>
       <Grid item xs={false} sm={false} md={false} lg={false} xl={1} />

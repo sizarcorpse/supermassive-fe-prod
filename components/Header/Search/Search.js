@@ -56,7 +56,7 @@ const useStyles = makeStyles({
 });
 
 const Search = (props) => {
-  const { classes } = props;
+  const { classes, handleNavSmallModalClose, closeMe } = props;
   const localClasses = useStyles();
   const inputRef = useRef();
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -66,6 +66,9 @@ const Search = (props) => {
   };
 
   const handleSearchModalClose = () => {
+    if (closeMe === true) {
+      handleNavSmallModalClose(false);
+    }
     setSearchModalOpen(false);
   };
 

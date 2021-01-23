@@ -11,7 +11,7 @@ import { FlexColumn } from "utils/FlexColumn";
 import { PostsCard } from "components/Card";
 import { NoContent } from "components/NoContent";
 // #material-ui :
-import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
+import { ThemeDistributor } from "styles/ThemeDistributor.js";
 import {
   withStyles,
   makeStyles,

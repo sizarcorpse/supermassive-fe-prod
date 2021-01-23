@@ -13,7 +13,7 @@ import { MakeUrls } from "utils/MakeUrls";
 
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
-import { withStyles, makeStyles, Box } from "@material-ui/core";
+import { withStyles, makeStyles, Box, withWidth } from "@material-ui/core";
 
 // #other :
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 const PostMedia = (props) => {
-  const { classes, cover } = props;
+  const { classes, cover, width } = props;
 
   const localClasses = useStyles();
 
@@ -43,16 +43,18 @@ const PostMedia = (props) => {
     >
       <Image
         src={MakeUrls(cover)}
-        height={cover.formats.large.height}
+        height={width === "xs" ? 320 : cover.formats.large.height}
         width={cover.formats.large.width}
         layout="fixed"
       />
     </Box>
   ) : null;
 };
-export default withStyles(
-  (theme) => ({
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(PostMedia);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(PostMedia)
+);

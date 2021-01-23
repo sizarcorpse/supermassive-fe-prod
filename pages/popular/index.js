@@ -13,7 +13,7 @@ import { NoContent } from "components/NoContent";
 // #validations :
 
 // #material-ui :
-import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
+import { ThemeDistributor } from "styles/ThemeDistributor.js";
 import {
   withStyles,
   makeStyles,

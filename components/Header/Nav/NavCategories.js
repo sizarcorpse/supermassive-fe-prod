@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 // #contexts :
-// import { useAuth } from 'contexts/AuthContext';
 // #hooks :
 import { MakeUrls } from "utils/MakeUrls";
 // #components :
@@ -64,7 +63,7 @@ const useStyles = makeStyles({
 });
 
 const NavCategories = (props) => {
-  const { classes, categories, lessMe, handleNavSmallModalClose } = props;
+  const { classes, categories } = props;
   const { publicRuntimeConfig } = getConfig();
   const localClasses = useStyles();
   const [showCat, setShowCat] = useState(7);
@@ -112,61 +111,19 @@ const NavCategories = (props) => {
         alignItems="center"
         style={{ backgroundColor: "#ffffff" }}
       >
-        {showCat !== undefined && lessMe === true ? (
-          <ListItem
-            className={localClasses.itemAlt}
-            onClick={() => {
-              setShowCat(undefined);
-            }}
-          >
-            <ListItemText
-              primary={
-                <Typography variant="h2">Show More Categories</Typography>
-              }
-              secondary={
-                <Typography variant="h1">Click here for more</Typography>
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" size="small">
-                <ArrowForwardIcon fontSize="small" />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ) : showCat === undefined && lessMe === true ? (
-          <ListItem
-            className={localClasses.itemAlt}
-            onClick={() => {
-              setShowCat(7);
-            }}
-          >
-            <ListItemText
-              primary={<Typography variant="h2">Less Categories</Typography>}
-              secondary={
-                <Typography variant="h1">Click here for less</Typography>
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="start" size="small">
-                <ArrowBackIcon fontSize="small" />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ) : (
-          <ListItem className={localClasses.itemAlt}>
-            <ListItemText
-              primary={<Typography variant="h2">More Categories</Typography>}
-              secondary={
-                <Typography variant="h1">Click here for more</Typography>
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" size="small">
-                <ArrowForwardIcon fontSize="small" />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        )}
+        <ListItem className={localClasses.itemAlt}>
+          <ListItemText
+            primary={<Typography variant="h2">Show More Categories</Typography>}
+            secondary={
+              <Typography variant="h1">Click here for more</Typography>
+            }
+          />
+          <ListItemSecondaryAction>
+            <IconButton edge="end" size="small">
+              <ArrowForwardIcon fontSize="small" />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
       </Box>
     </List>
   );
