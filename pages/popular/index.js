@@ -1,19 +1,15 @@
-import { useState } from "react";
-import Masonry from "react-masonry-css";
-
 // #next :
 import Head from "next/head";
-import getConfig from "next/config";
-import { useRouter } from "next/router";
+// import getConfig from "next/config";
+// import { useRouter } from "next/router";
 // import Link from 'next/link';
-
-import useSWR, { useSWRInfinite } from "swr";
+// import useSWR, { useSWRInfinite } from "swr";
 // #hooks :
 import { getPostsByPopular } from "actions/FetchPosts";
-
+import { FlexColumn } from "utils/FlexColumn";
 // #components :
 import { PostsCard } from "components/Card";
-import SwiperRoot from "components/Swiper/Swiper";
+import { NoContent } from "components/NoContent";
 // #validations :
 
 // #material-ui :
@@ -23,47 +19,21 @@ import {
   makeStyles,
   Grid,
   Box,
-  Button,
-  CircularProgress,
   Card,
   Typography,
 } from "@material-ui/core";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
+import withWidth from "@material-ui/core/withWidth";
 // #other :
-import _ from "lodash";
+import Masonry from "react-masonry-css";
 
 const useStyles = makeStyles({
   backgroundColor: {
     backgroundColor: "#f9f7f7",
   },
-  title: {
-    fontFamily: "Ubuntu",
-    fontSize: "3.5em",
-    letterSpacing: -1.4,
-    wordSpacing: 0,
-    fontWeight: 300,
-    textTransform: "capitalize",
-    fontStyle: "normal",
-    fontVariant: "normal",
-    textAlign: "center",
-    lineHeight: 1.3,
-  },
-  subtitle: {
-    fontFamily: "Ubuntu",
-    fontSize: "1.2em",
-    letterSpacing: 1,
-    wordSpacing: 1,
-    fontWeight: 300,
-    textTransform: "capitalize",
-    fontStyle: "normal",
-    fontVariant: "normal",
-    textAlign: "center",
-  },
 });
 
 // #serverSideProps :
-const { publicRuntimeConfig } = getConfig();
+// const { publicRuntimeConfig } = getConfig();
 
 export async function getServerSideProps(context) {
   const posts = await getPostsByPopular({
@@ -79,13 +49,6 @@ export async function getServerSideProps(context) {
 const Popular = (props) => {
   const { classes, posts, width } = props;
   const localClasses = useStyles();
-
-  const breakpointColumnsObj = {
-    default: 4,
-    700: 1,
-    1100: 2,
-    1500: 3,
-  };
 
   // * this code will be needed when i overwrite strapi default and make page and new route..
   //   let items = 4;
@@ -112,9 +75,19 @@ const Popular = (props) => {
 
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
+      <Head>
+        <title>
+          This is a personal blog website site. Developed by sizarcorpse.
+        </title>
+        <meta
+          name="description"
+          content="This is a personal blog website site. Developed by sizarcorpse. Developer used Strapi as Headless cms, Nextjs as front-end, Vercel as cloud platform and mongodb as database"
+        />
+      </Head>
+
       <Grid item xs={12}>
         <Box width={"100%"} display="flex" justifyContent="center">
-          <Box mx={7} maxWidth={1700} width="100%">
+          <Box mx={width === "xs" ? 1 : 7} maxWidth={1700} width="100%">
             <Card style={{ padding: "32px 0px" }}>
               <Box
                 display="flex"
@@ -123,8 +96,8 @@ const Popular = (props) => {
                 flexDirection="column"
                 flexShrink={1}
               >
-                <Typography className={localClasses.title}>Popular</Typography>
-                <Typography className={localClasses.subtitle}>
+                <Typography className={classes.page_title}>Popular</Typography>
+                <Typography className={classes.page_subtitle}>
                   Posts in this page is featured and Popular.
                 </Typography>
               </Box>
@@ -133,42 +106,22 @@ const Popular = (props) => {
         </Box>
       </Grid>
       <Grid item xs={12}>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {posts.map((post, i) => (
-            <div key={i}>
-              <PostsCard post={post} />
-            </div>
-          ))}
-        </Masonry>
-      </Grid>
-      {/* <Grid item xs={12}>
-        <Box
-          height={50}
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          my={2}
-        >
-          <Button
-            onClick={() => {
-              setSize(size + 1);
-            }}
-            disabled={isReachingEnd}
+        {posts && posts.length !== 0 ? (
+          <Masonry
+            breakpointCols={FlexColumn}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
           >
-            {isLoadingMore ? (
-              <CircularProgress />
-            ) : isReachingEnd ? (
-              "No More Post"
-            ) : (
-              <AutorenewIcon />
-            )}
-          </Button>
-        </Box>
-      </Grid> */}
+            {posts.map((post, i) => (
+              <div key={i}>
+                <PostsCard post={post} />
+              </div>
+            ))}
+          </Masonry>
+        ) : (
+          <NoContent />
+        )}
+      </Grid>
     </Grid>
   );
 };

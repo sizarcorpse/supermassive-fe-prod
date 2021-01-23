@@ -1,6 +1,5 @@
 export const ThemeDistributor = (theme) => ({
-  // // #global
-  scui_link_underline_remove: {
+  link_underline_remove: {
     textTransform: "none",
     textDecoration: "none",
   },
@@ -70,54 +69,11 @@ export const ThemeDistributor = (theme) => ({
       },
     },
   },
-  // // Nav small
-  // scui_box_grid: {
-  //   border: "1px solid pink",
-  //   display: "grid",
-  //   gridTemplateColumns: "repeat(auto-fill, minmax(633px, 1fr))",
-  // },
-  // // components => card
-  // scui_card_cat: {
-  //   position: "absolute",
-  //   top: "24px",
-  //   left: "7%",
-  // },
+
   swiper_card_details: {
     position: "absolute",
     bottom: "5%",
     left: "5%",
-  },
-
-  // #home page
-
-  flexBox_root: {
-    display: "flex",
-    flexWrap: "wrap",
-    margin: "24px auto",
-  },
-
-  flexBox_column: {
-    [theme.breakpoints.down("xs")]: {
-      flex: "100%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      flex: "50%",
-    },
-    [theme.breakpoints.up("sm")]: {
-      flex: "33%",
-    },
-    [theme.breakpoints.down("md")]: {
-      flex: "33%",
-    },
-    [theme.breakpoints.up("md")]: {
-      flex: "33%",
-    },
-    [theme.breakpoints.up("lg")]: {
-      flex: "25%",
-    },
-    [theme.breakpoints.up("xl")]: {
-      flex: "25%",
-    },
   },
 
   try2: {
@@ -180,5 +136,33 @@ export const ThemeDistributor = (theme) => ({
     height: 50,
     width: 200,
     background: "#a1a1a3",
+  },
+
+  // #action : card
+
+  // * category, featured, popular, search :: page title card
+
+  page_title: {
+    fontFamily: "Ubuntu",
+    fontSize: "3.5em",
+    letterSpacing: -1.4,
+    wordSpacing: 0,
+    fontWeight: 300,
+    textTransform: "capitalize",
+    fontStyle: "normal",
+    fontVariant: "normal",
+    textAlign: "center",
+    lineHeight: 1.3,
+  },
+  page_subtitle: {
+    fontFamily: "Ubuntu",
+    fontSize: "1.2em",
+    letterSpacing: 1,
+    wordSpacing: 1,
+    fontWeight: 300,
+    textTransform: "capitalize",
+    fontStyle: "normal",
+    fontVariant: "normal",
+    textAlign: "center",
   },
 });

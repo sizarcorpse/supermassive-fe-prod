@@ -66,3 +66,14 @@ export const getPostsByPopular = async ({ context }) => {
 
   return data;
 };
+
+export const getPostsBySearch = async ({ context }) => {
+  const { publicRuntimeConfig } = getConfig();
+  const slug = context.query.slug;
+  const response = await fetch(
+    `${publicRuntimeConfig.ROOT_API_URL}/posts?title_contains=${slug}&_sort=views:DESC&_limit=12`
+  );
+  const data = await response.json();
+
+  return data;
+};

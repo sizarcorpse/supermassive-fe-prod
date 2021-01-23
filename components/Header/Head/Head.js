@@ -16,6 +16,8 @@ import DateRangeIcon from "@material-ui/icons/DateRange";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
 import { getDay, setDay, format } from "date-fns";
+import { Search } from "../Search";
+
 const Head = (props) => {
   const { classes, closeMe, handleNavSmallModalClose } = props;
   const router = useRouter();
@@ -50,10 +52,10 @@ const Head = (props) => {
             <Grid
               item
               xs={6}
-              sm={7}
-              md={9}
-              lg={9}
-              xl={9}
+              sm={4}
+              md={7}
+              lg={7}
+              xl={8}
               style={{ borderRight: "1px solid #e3e3e3" }}
             >
               <Box display="flex" justifyContent="center" alignItems="center">
@@ -80,7 +82,7 @@ const Head = (props) => {
               </Box>
             </Grid>
 
-            <Grid item xs={6} sm={2} md={1} lg={1} xl={1}>
+            <Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
               <Box
                 display="flex"
                 justifyContent="flex-start"
@@ -95,7 +97,7 @@ const Head = (props) => {
                     }}
                   />
                 ) : (
-                  <SearchIcon color="primary" />
+                  <Search />
                 )}
               </Box>
             </Grid>

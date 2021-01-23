@@ -74,10 +74,7 @@ const Nav = (props) => {
                 <Box display="flex" justifyContent="center" alignItems="center">
                   <Box display="flex">
                     <Box m={2}>
-                      <Link
-                        href="/"
-                        className={classes.scui_link_underline_remove}
-                      >
+                      <Link href="/" className={classes.link_underline_remove}>
                         <Typography
                           variant="h2"
                           color="primary"
@@ -114,7 +111,7 @@ const Nav = (props) => {
                     <Box m={2}>
                       <Link
                         href="/popular"
-                        className={classes.scui_link_underline_remove}
+                        className={classes.link_underline_remove}
                       >
                         <Typography
                           variant="h2"
@@ -128,7 +125,7 @@ const Nav = (props) => {
                     <Box m={2}>
                       <Link
                         href="/featured"
-                        className={classes.scui_link_underline_remove}
+                        className={classes.link_underline_remove}
                       >
                         <Typography
                           variant="h2"
@@ -140,10 +137,7 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link
-                        href="/"
-                        className={classes.scui_link_underline_remove}
-                      >
+                      <Link href="/" className={classes.link_underline_remove}>
                         <Typography
                           variant="h2"
                           color="primary"
@@ -154,10 +148,7 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link
-                        href="/"
-                        className={classes.scui_link_underline_remove}
-                      >
+                      <Link href="/" className={classes.link_underline_remove}>
                         <Typography
                           variant="h2"
                           color="primary"

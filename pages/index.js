@@ -1,23 +1,22 @@
-import { useState } from "react";
 import Masonry from "react-masonry-css";
 
 // #next :
 import Head from "next/head";
 import getConfig from "next/config";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 // import Link from 'next/link';
-
-import useSWR, { useSWRInfinite } from "swr";
+import { useSWRInfinite } from "swr";
 // #hooks :
 import { getAllPosts, getEditorsChoicePost } from "actions/FetchPosts";
-
+import { FlexColumn } from "utils/FlexColumn";
 // #components :
 import { PostsCard } from "components/Card";
 import SwiperRoot from "components/Swiper/Swiper";
+import { NoContent } from "components/NoContent";
 // #validations :
 
 // #material-ui :
-import { ThemeDistributor } from "../styles/ThemeDistributor.js";
+import { ThemeDistributor } from "styles/ThemeDistributor.js";
 import {
   withStyles,
   makeStyles,
@@ -26,7 +25,7 @@ import {
   Button,
   CircularProgress,
 } from "@material-ui/core";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import withWidth from "@material-ui/core/withWidth";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 // #other :
 import _ from "lodash";
@@ -56,12 +55,7 @@ const Home = (props) => {
   const { classes, posts, width, editorChoices } = props;
   const localClasses = useStyles();
 
-  const breakpointColumnsObj = {
-    default: 4,
-    700: 1,
-    1100: 2,
-    1500: 3,
-  };
+  // #handlers : Infinity Scroll
   let items = 4;
   const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(
     (index) =>
@@ -74,8 +68,7 @@ const Home = (props) => {
       initialData: posts,
     }
   );
-
-  const allComments = data ? [].concat(...data) : [];
+  const concatPostsData = data ? [].concat(...data) : [];
   const isLoadingInitialData = !data && !error;
   const isLoadingMore =
     isLoadingInitialData ||
@@ -94,17 +87,21 @@ const Home = (props) => {
         ) : null}
       </Grid>
       <Grid item xs={12}>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {allComments.map((post, i) => (
-            <div key={i}>
-              <PostsCard post={post} />
-            </div>
-          ))}
-        </Masonry>
+        {data && data.length !== 0 ? (
+          <Masonry
+            breakpointCols={FlexColumn}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {concatPostsData.map((post, i) => (
+              <div key={i}>
+                <PostsCard post={post} />
+              </div>
+            ))}
+          </Masonry>
+        ) : (
+          <NoContent />
+        )}
       </Grid>
       <Grid item xs={12}>
         <Box

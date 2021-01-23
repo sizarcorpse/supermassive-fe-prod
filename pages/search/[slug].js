@@ -1,17 +1,21 @@
 // #next :
 import Head from "next/head";
+// import getConfig from "next/config";
 import { useRouter } from "next/router";
 // import Link from 'next/link';
 // import useSWR, { useSWRInfinite } from "swr";
+// #contexts :
 
 // #hooks :
-import { getPostsByCategory } from "actions/FetchPosts";
+import { getPostsBySearch } from "actions/FetchPosts";
 import { FlexColumn } from "utils/FlexColumn";
 // #components :
 import { PostsCard } from "components/Card";
 import { NoContent } from "components/NoContent";
+// #validations :
+
 // #material-ui :
-import { ThemeDistributor } from "../../styles/ThemeDistributor.js";
+import { ThemeDistributor } from "styles/ThemeDistributor";
 import {
   withStyles,
   makeStyles,
@@ -23,8 +27,22 @@ import {
 import withWidth from "@material-ui/core/withWidth";
 
 // #other :
-import _ from "lodash";
 import Masonry from "react-masonry-css";
+import _ from "lodash";
+
+// #serverSideProps :
+// const { publicRuntimeConfig } = getConfig();
+
+export async function getServerSideProps(context) {
+  const posts = await getPostsBySearch({
+    context: context,
+  });
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 const useStyles = makeStyles({
   backgroundColor: {
@@ -32,28 +50,32 @@ const useStyles = makeStyles({
   },
 });
 
-// #serverSideProps :
-export async function getServerSideProps(context) {
-  const res = await getPostsByCategory({
-    context: context,
-    limit: 10,
-    page: 1,
-  });
-
-  return {
-    props: {
-      posts: res.posts,
-      categoryDetails: {
-        categoryName: res.name,
-        categoryId: res._id,
-      },
-    },
-  };
-}
-
-const Category = (props) => {
-  const { classes, posts, categoryDetails, width } = props;
+const Search = (props) => {
+  const { classes, posts, width } = props;
   const localClasses = useStyles();
+
+  // * this code will be needed when i overwrite strapi default and make page and new route..
+  //   let items = 4;
+  //   const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(
+  //     (index) =>
+  //       `${publicRuntimeConfig.ROOT_API_URL}/posts/page?_limit=${items}&_page=${
+  //         index + 1
+  //       }`,
+
+  //     {
+  //       revalidateOnFocus: false,
+  //       initialData: posts,
+  //     }
+  //   );
+
+  //   const allComments = data ? [].concat(...data) : [];
+  //   const isLoadingInitialData = !data && !error;
+  //   const isLoadingMore =
+  //     isLoadingInitialData ||
+  //     (size > 0 && data && typeof data[size - 1] === "undefined");
+  //   const isEmpty = data?.[0]?.length === 0;
+  //   const isReachingEnd =
+  //     isEmpty || (data && data[data.length - 1]?.length < items);
 
   return (
     <Grid container components="main" className={localClasses.backgroundColor}>
@@ -66,7 +88,6 @@ const Category = (props) => {
           content="This is a personal blog website site. Developed by sizarcorpse. Developer used Strapi as Headless cms, Nextjs as front-end, Vercel as cloud platform and mongodb as database"
         />
       </Head>
-
       <Grid item xs={12}>
         <Box width={"100%"} display="flex" justifyContent="center">
           <Box mx={width === "xs" ? 1 : 7} maxWidth={1700} width="100%">
@@ -78,11 +99,9 @@ const Category = (props) => {
                 flexDirection="column"
                 flexShrink={1}
               >
-                <Typography className={classes.page_title}>
-                  Category : {categoryDetails.categoryName}
-                </Typography>
+                <Typography className={classes.page_title}>Search</Typography>
                 <Typography className={classes.page_subtitle}>
-                  Posts in this category featured and editor choice.
+                  Posts in this page is featured and Popular.
                 </Typography>
               </Box>
             </Card>
@@ -106,24 +125,14 @@ const Category = (props) => {
           <NoContent />
         )}
       </Grid>
-      <Grid item xs={12}>
-        <Box
-          height={50}
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          my={2}
-        ></Box>
-      </Grid>
     </Grid>
   );
 };
-
 export default withWidth()(
   withStyles(
     (theme) => ({
       ...ThemeDistributor(theme),
     }),
     { withTheme: true }
-  )(Category)
+  )(Search)
 );

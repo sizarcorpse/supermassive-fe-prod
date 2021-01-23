@@ -30,14 +30,15 @@ const useStyles = makeStyles((theme) => ({
     color: "#132743",
     margin: theme.spacing(1),
   },
+  bg: { backgroundColor: "#f9f7f7" },
 }));
 
 const Footer = (props) => {
   const { width } = props;
 
-  const classes = useStyles();
+  const localClasses = useStyles();
   return (
-    <Grid container component="main">
+    <Grid container component="main" className={localClasses.bg}>
       <Grid
         item
         xs={12}
@@ -50,14 +51,15 @@ const Footer = (props) => {
           display="flex"
           mx={width !== "xs" ? 10 : 1}
           flexDirection={width !== "xs" ? "row" : "column"}
+          className={localClasses.bg}
         >
           <Box display="flex" flexDirection="row" flexGrow={1} margin="auto">
-            <Typography className={classes.neckText}>
+            <Typography className={localClasses.neckText}>
               💀 2021, SizarCorpse
             </Typography>
-            <Typography className={classes.neckText}> License</Typography>
-            <Typography className={classes.neckText}> Terms</Typography>
-            <Typography className={classes.neckText}> Privacy</Typography>
+            <Typography className={localClasses.neckText}> License</Typography>
+            <Typography className={localClasses.neckText}> Terms</Typography>
+            <Typography className={localClasses.neckText}> Privacy</Typography>
           </Box>
 
           <Box
@@ -66,23 +68,23 @@ const Footer = (props) => {
             mx={width !== "xs" ? 0 : "auto"}
           >
             <IconButton>
-              <FacebookIcon className={classes.ScuiIconSingle} />
+              <FacebookIcon className={localClasses.ScuiIconSingle} />
             </IconButton>
 
             <IconButton>
-              <GitHubIcon className={classes.ScuiIconSingle} />
+              <GitHubIcon className={localClasses.ScuiIconSingle} />
             </IconButton>
 
             <IconButton>
-              <TwitterIcon className={classes.ScuiIconSingle} />
+              <TwitterIcon className={localClasses.ScuiIconSingle} />
             </IconButton>
 
             <IconButton>
-              <LinkedInIcon className={classes.ScuiIconSingle} />
+              <LinkedInIcon className={localClasses.ScuiIconSingle} />
             </IconButton>
 
             <IconButton>
-              <LanguageIcon className={classes.ScuiIconSingle} />
+              <LanguageIcon className={localClasses.ScuiIconSingle} />
             </IconButton>
           </Box>
         </Box>
