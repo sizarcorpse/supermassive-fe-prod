@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ThemeDistributor } from "styles/ThemeDistributor";
 import withWidth from "@material-ui/core/withWidth";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,12 +16,12 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import LanguageIcon from "@material-ui/icons/Language";
 const useStyles = makeStyles((theme) => ({
-  ScuiIcon: {
+  iron: {
     fontSize: 22,
     margin: "auto 16px",
     color: "#132743",
   },
-  ScuiIconSingle: {
+  ironSingle: {
     fontSize: 20,
   },
   neckText: {
@@ -57,9 +58,24 @@ const Footer = (props) => {
             <Typography className={localClasses.neckText}>
               💀 2021, SizarCorpse
             </Typography>
-            <Typography className={localClasses.neckText}> License</Typography>
-            <Typography className={localClasses.neckText}> Terms</Typography>
-            <Typography className={localClasses.neckText}> Privacy</Typography>
+            <Link href="/terms">
+              <Typography
+                className={localClasses.neckText}
+                style={{ cursor: "pointer" }}
+              >
+                {" "}
+                Terms & Conditions
+              </Typography>
+            </Link>
+            <Link href="/privacy">
+              <Typography
+                className={localClasses.neckText}
+                style={{ cursor: "pointer" }}
+              >
+                {" "}
+                Privacy Policy
+              </Typography>
+            </Link>
           </Box>
 
           <Box
@@ -67,25 +83,45 @@ const Footer = (props) => {
             flexDirection="row"
             mx={width !== "xs" ? 0 : "auto"}
           >
-            <IconButton>
-              <FacebookIcon className={localClasses.ScuiIconSingle} />
-            </IconButton>
+            <Link href="https://www.facebook.com/cj.sizar/" passHref={true}>
+              <a target="_blank">
+                <IconButton>
+                  <FacebookIcon className={localClasses.ironSingle} />
+                </IconButton>{" "}
+              </a>
+            </Link>
 
-            <IconButton>
-              <GitHubIcon className={localClasses.ScuiIconSingle} />
-            </IconButton>
-
-            <IconButton>
-              <TwitterIcon className={localClasses.ScuiIconSingle} />
-            </IconButton>
-
-            <IconButton>
-              <LinkedInIcon className={localClasses.ScuiIconSingle} />
-            </IconButton>
-
-            <IconButton>
-              <LanguageIcon className={localClasses.ScuiIconSingle} />
-            </IconButton>
+            <Link href="https://github.com/sizarcorpse" passHref={true}>
+              <a target="_blank">
+                <IconButton>
+                  <GitHubIcon className={localClasses.ironSingle} />
+                </IconButton>{" "}
+              </a>
+            </Link>
+            <Link href="https://twitter.com/sizarcorpse" passHref={true}>
+              <a target="_blank">
+                <IconButton>
+                  <TwitterIcon className={localClasses.ironSingle} />
+                </IconButton>{" "}
+              </a>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/ramizimran/"
+              passHref={true}
+            >
+              <a target="_blank">
+                <IconButton>
+                  <LinkedInIcon className={localClasses.ironSingle} />
+                </IconButton>{" "}
+              </a>
+            </Link>
+            <Link href="https://sizarcorpse.netlify.app/" passHref={true}>
+              <a target="_blank">
+                <IconButton>
+                  <LanguageIcon className={localClasses.ironSingle} />
+                </IconButton>{" "}
+              </a>
+            </Link>
           </Box>
         </Box>
       </Grid>

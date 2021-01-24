@@ -5,7 +5,7 @@ export const getAllPosts = async ({ context, limit, page }) => {
   const { publicRuntimeConfig } = getConfig();
 
   const response = await fetch(
-    `${publicRuntimeConfig.ROOT_API_URL}/posts/page?_limit=${limit}&_page=${page}`
+    `${publicRuntimeConfig.ROOT_API_URL}/posts/page?_limit=${limit}&_sort=title&_page=${page}`
   );
   const data = await response.json();
 

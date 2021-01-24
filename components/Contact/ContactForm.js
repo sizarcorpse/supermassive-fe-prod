@@ -17,7 +17,7 @@ import { ThemeDistributor } from "styles/ThemeDistributor";
 import {
   withStyles,
   makeStyles,
-  Avatar,
+  withWidth,
   Button,
   CssBaseline,
   TextField,
@@ -34,19 +34,36 @@ import {
 // #other :
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
+  container: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "flex-end",
+    [theme.breakpoints.up("xs")]: {
+      justifyContent: "center",
+    },
+  },
+  paper: {
+    [theme.breakpoints.down("xl")]: {
+      maxWidth: "75%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      maxWidth: "75%",
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "80%",
+    },
+    [theme.breakpoints.up("xs")]: {
+      maxWidth: "95%",
+    },
+
     padding: theme.spacing(4),
+    marginTop: theme.spacing(8),
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -55,13 +72,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactForm = (props) => {
-  const { classes } = props;
+  const { classes, width } = props;
   // const { currentUser } = useAuth();
   // const { publicRuntimeConfig } = getConfig();
   const localClasses = useStyles();
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container
+      component="main"
+      maxWidth="md"
+      className={localClasses.container}
+    >
       <CssBaseline />
       <Card className={localClasses.paper}>
         <Box
@@ -73,14 +94,17 @@ const ContactForm = (props) => {
           <Typography
             variant="h4"
             style={{
-              fontSize: 24,
+              fontSize: 28,
               fontWeight: "bold",
-              lineHeight: 3.5,
+              lineHeight: 2.5,
             }}
           >
             Lets Talk
           </Typography>
-          <Typography variant="h4" style={{ fontSize: 18, fontWeight: 400 }}>
+          <Typography
+            variant="h4"
+            style={{ fontSize: 18, fontWeight: 400, lineHeight: 1.5 }}
+          >
             Any question ? Please contact us.
           </Typography>
         </Box>
@@ -176,10 +200,11 @@ const ContactForm = (props) => {
     </Container>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(ContactForm);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(ContactForm)
+);

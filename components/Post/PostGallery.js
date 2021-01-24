@@ -20,7 +20,7 @@ import { withStyles, makeStyles, Box } from "@material-ui/core";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import Gallery from "react-photo-gallery";
 
-React.useLayoutEffect = React.useEffect;
+// React.useLayoutEffect = React.useEffect;
 
 const PostGallery = (props) => {
   const { classes, gallery } = props;

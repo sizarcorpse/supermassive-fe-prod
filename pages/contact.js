@@ -47,13 +47,13 @@ const Contact = (props) => {
 
   return (
     <Grid container style={{ backgroundColor: "#f9f7f7" }}>
-      <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+      <Grid item xs={12} sm={12} md={12} lg={7} xl={8}>
         <ContactForm />
       </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+      <Grid item xs={12} sm={12} md={12} lg={5} xl={4}>
         <Box
           display="flex"
-          alignItems="center"
+          alignItems="flex-start"
           flexDirection="column"
           width="100%"
           mt={8}
@@ -74,7 +74,6 @@ const Contact = (props) => {
               style={{
                 fontSize: 18,
                 fontWeight: 400,
-
                 lineHeight: 1,
               }}
             >

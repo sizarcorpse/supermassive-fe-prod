@@ -38,7 +38,7 @@ const SwiperCard = (props) => {
         <SwiperCardMedia cover={post.cover} />
         <Box aria-label="details" className={classes.swiper_card_details}>
           <SwiperCardCategory categories={post.categories} />
-          <SwiperCardTitle title={post.title} />
+          <SwiperCardTitle title={post.title} slug={post.slug} />
           <SwiperCardDesc content={post.content} />
           <SwiperCardAuthor
             author={post.author}

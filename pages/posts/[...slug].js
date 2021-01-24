@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 // #next :
 import getConfig from "next/config";
+import Head from "next/head";
 // import {useRouter} from 'next/router';
 // import Link from 'next/link';
 // import Image from 'next/image';
@@ -35,17 +36,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-const useStyles = makeStyles({
-  root: {},
-});
-
 const Post = (props) => {
   const { classes, post, categories, posts } = props;
-  const localClasses = useStyles();
-
-  useEffect(() => {
-    fetch(`http://localhost:1337/posts/${post._id}/views`, { method: "PATCH" });
-  }, []);
 
   return (
     <Grid
@@ -53,6 +45,13 @@ const Post = (props) => {
       components="main"
       style={{ backgroundColor: "#f9f7f7", display: "flex" }}
     >
+      <Head>
+        {post.meta_title && <title>{post.meta_title}</title>}
+        {post.meta_description && (
+          <meta name="description" content={post.meta_description} />
+        )}
+      </Head>
+
       <Grid item xs={false} sm={false} md={false} lg={false} xl={1} />
       <Grid item xl={6} lg={7} md={7} sm={12} xs={12}>
         <Box width="100%" height="100%">

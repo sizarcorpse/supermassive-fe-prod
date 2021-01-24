@@ -61,7 +61,7 @@ const CardAuthor = (props) => {
           |
         </Typography>
         <Typography variant="h1" color="primary">
-          {formatDistanceToNow(new Date(createdAt))}
+          {formatDistanceToNow(new Date(createdAt))} ago
         </Typography>
       </Box>
     </Box>

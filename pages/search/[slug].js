@@ -61,13 +61,11 @@ const Search = (props) => {
   //       `${publicRuntimeConfig.ROOT_API_URL}/posts/page?_limit=${items}&_page=${
   //         index + 1
   //       }`,
-
   //     {
   //       revalidateOnFocus: false,
   //       initialData: posts,
   //     }
   //   );
-
   //   const allComments = data ? [].concat(...data) : [];
   //   const isLoadingInitialData = !data && !error;
   //   const isLoadingMore =

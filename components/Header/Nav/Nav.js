@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
 import NavMobile from "./NavMobile";
 import NavCategories from "./NavCategories";
 
@@ -26,6 +25,7 @@ import {
 import FreeBreakfastIcon from "@material-ui/icons/FreeBreakfast";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import MenuIcon from "@material-ui/icons/Menu";
+
 const Nav = (props) => {
   const { classes, categories, width } = props;
 
@@ -64,12 +64,26 @@ const Nav = (props) => {
         <AppBar position="static" elevation={0} className={classes.nav_appBar}>
           <Toolbar className={classes.nav_toolBar}>
             <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>
-              <Box display="flex" justifyContent="center">
-                <FreeBreakfastIcon color="primary" />
+              <Box
+                display="flex"
+                justifyContent={{
+                  xs: "flex-start",
+                  sm: "center",
+                  md: "center",
+                  lg: "center",
+                  xl: "center",
+                }}
+              >
+                <Link href="/">
+                  <FreeBreakfastIcon
+                    color="primary"
+                    style={{ cursor: "pointer" }}
+                  />
+                </Link>
               </Box>
             </Grid>
 
-            <Grid item xs={2} sm={4} md={6} lg={8} xl={8}>
+            <Grid item xs={8} sm={4} md={6} lg={8} xl={8}>
               <Hidden mdDown>
                 <Box display="flex" justifyContent="center" alignItems="center">
                   <Box display="flex">
@@ -206,7 +220,7 @@ const Nav = (props) => {
               </Modal>
             </Grid>
 
-            <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>
+            {/* <Grid item xs={4} sm={4} md={3} lg={2} xl={2}>
               <Box
                 display="flex"
                 justifyContent="flex-start"
@@ -221,7 +235,7 @@ const Nav = (props) => {
                   </Typography>
                 </Box>
               </Box>
-            </Grid>
+            </Grid> */}
           </Toolbar>
         </AppBar>
       </Grid>

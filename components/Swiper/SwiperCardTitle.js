@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 // #next :
-
+import Link from "next/link";
 // #contexts :
 
 // #hooks :
@@ -17,19 +17,25 @@ import { withStyles, Box, Typography } from "@material-ui/core";
 // #other :
 
 const SwiperCardTitle = (props) => {
-  const { title, width } = props;
+  const { title, width, slug } = props;
 
   return (
     <Box aria-label="title">
-      <Typography variant={width === "xs" ? "caption" : "h5"}>
-        {title}
-      </Typography>
+      <Link href={`posts/${slug}`}>
+        <Typography
+          variant={width === "xs" ? "caption" : "h5"}
+          style={{ cursor: "pointer" }}
+        >
+          {title}
+        </Typography>
+      </Link>
     </Box>
   );
 };
 
 SwiperCardTitle.propTypes = {
   title: PropTypes.string,
+  slug: PropTypes.string,
 };
 
 export default withWidth()(

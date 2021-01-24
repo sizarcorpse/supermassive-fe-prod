@@ -56,7 +56,9 @@ const PostDetails = (props) => {
               views={post.views}
             />
 
-            {post.photos.length > 0 && <PostGallery gallery={post.photos} />}
+            {post.photos.length > 0 ? (
+              <PostGallery gallery={post.photos} />
+            ) : null}
 
             <PostDesc content={post.content} />
             <Divider />

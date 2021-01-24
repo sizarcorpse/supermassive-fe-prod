@@ -244,8 +244,8 @@ const SearchArea = (props) => {
               <Box>
                 <Lottie
                   options={defaultOptions}
-                  height={150}
-                  width={150}
+                  height={100}
+                  width={100}
                   isPaused={lottiePause}
                 />
               </Box>
