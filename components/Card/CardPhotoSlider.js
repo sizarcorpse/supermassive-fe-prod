@@ -4,7 +4,7 @@ import Image from "next/image";
 // #contexts :
 
 // #hooks :
-
+import { MakeUrls } from "utils/MakeUrls";
 // #components :
 
 // #validations :
@@ -32,12 +32,24 @@ const CardPhotoSlider = (props) => {
     >
       {photos.map((photo, i) => (
         <SwiperSlide key={i} style={{ maxWidth: 405, maxHeight: 302 }}>
-          <Box width="100%" height="100%">
+          <Box
+            width="100%"
+            height="100%"
+            minHeight={302}
+            style={{
+              background: `url(${MakeUrls(photo.formats.medium)})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backdropFilter: "blur(10px)",
+              backgroundPosition: "center",
+              maxHeight: 302,
+              overflow: "hidden",
+            }}
+          >
             <Image
-              src={`${publicRuntimeConfig.ROOT_API_URL}${photo.url}`}
+              src={MakeUrls(photo)}
               width={photo.width}
               height={photo.height}
-              layout="responsive"
             />
           </Box>
         </SwiperSlide>

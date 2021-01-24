@@ -137,7 +137,10 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link href="/about" className={classes.link_underline_remove}>
+                      <Link
+                        href="/about"
+                        className={classes.link_underline_remove}
+                      >
                         <Typography
                           variant="h2"
                           color="primary"
@@ -148,7 +151,10 @@ const Nav = (props) => {
                       </Link>
                     </Box>
                     <Box m={2}>
-                      <Link href="/contact" className={classes.link_underline_remove}>
+                      <Link
+                        href="/contact"
+                        className={classes.link_underline_remove}
+                      >
                         <Typography
                           variant="h2"
                           color="primary"
@@ -211,7 +217,7 @@ const Nav = (props) => {
                 </Box>
                 <Box display="flex" alignItems="center">
                   <Typography variant="h1" color="primary">
-                    sign in | sign up
+                    sign in
                   </Typography>
                 </Box>
               </Box>

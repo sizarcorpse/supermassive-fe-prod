@@ -48,6 +48,9 @@ const Contact = (props) => {
   return (
     <Grid container style={{ backgroundColor: "#f9f7f7" }}>
       <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+        <ContactForm />
+      </Grid>
+      <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
         <Box
           display="flex"
           alignItems="center"
@@ -61,7 +64,6 @@ const Contact = (props) => {
               style={{
                 fontSize: 40,
                 fontWeight: "bold",
-                color: "#1b2a67",
               }}
             >
               How can we help?
@@ -72,7 +74,7 @@ const Contact = (props) => {
               style={{
                 fontSize: 18,
                 fontWeight: 400,
-                color: "#445eea",
+
                 lineHeight: 1,
               }}
             >
@@ -85,9 +87,6 @@ const Contact = (props) => {
             <SkillCard key={i} />
           ))}
         </Box>
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-        <ContactForm />
       </Grid>
     </Grid>
   );

@@ -11,16 +11,19 @@ import {
   Box,
   Hidden,
 } from "@material-ui/core";
-import { motion } from "framer-motion";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import CloseIcon from "@material-ui/icons/Close";
-import SearchIcon from "@material-ui/icons/Search";
-import { getDay, setDay, format } from "date-fns";
+import { format } from "date-fns";
 import { Search } from "../Search";
 
 const Head = (props) => {
   const { classes, closeMe, handleNavSmallModalClose } = props;
-  const router = useRouter();
+  const menu = [
+    { name: "Home", url: "/" },
+    { name: "Popular", url: "/popular" },
+    { name: "Contact", url: "/contact" },
+  ];
+
   return (
     <Grid container component="main">
       <CssBaseline />
@@ -63,11 +66,17 @@ const Head = (props) => {
                 <Hidden smDown>
                   <Box flexGrow={1} flexShrink={1}>
                     <Box display="flex">
-                      {["Home", "Archive", "Contact"].map((m, i) => (
+                      {menu.map((m, i) => (
                         <Box key={i} mx={1}>
-                          <Typography variant="h1" color="primary">
-                            {m}
-                          </Typography>
+                          <Link href={`${m.url}`}>
+                            <Typography
+                              variant="h1"
+                              color="primary"
+                              className={classes.nav_onHover}
+                            >
+                              {m.name}
+                            </Typography>
+                          </Link>
                         </Box>
                       ))}
                     </Box>
@@ -76,7 +85,7 @@ const Head = (props) => {
                 <Hidden mdDown>
                   <Box display="flex" flexGrow={1}>
                     <Typography variant="h1" color="primary">
-                      This is supermassive black hole aha!!
+                      This is supermassive black-hole aha!!
                     </Typography>
                   </Box>
                 </Hidden>

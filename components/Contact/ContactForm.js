@@ -76,7 +76,6 @@ const ContactForm = (props) => {
               fontSize: 24,
               fontWeight: "bold",
               lineHeight: 3.5,
-              color: "#1b2a67",
             }}
           >
             Lets Talk

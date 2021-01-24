@@ -131,120 +131,135 @@ const SearchArea = (props) => {
       <CssBaseline />
       <Grid item xl={4} lg={4} md={3} sm={2} xs={false} />
       <Grid item xl={4} lg={6} md={6} sm={8} xs={12}>
-        <Box
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          mt={5}
+        <Grid
+          container
+          justify="space-between"
+          alignItems="stretch"
+          style={{ height: "100%" }}
         >
-          <Box width="100%">
-            <form onSubmit={handleSubmit}>
-              <Box>
-                <FormControl fullWidth>
-                  <TextField
-                    className={localClasses.SearchTitleTextField}
-                    InputProps={{
-                      shrink: "false",
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon />
-                        </InputAdornment>
-                      ),
-                      endAdornment: (
-                        <InputAdornment position="start">
-                          <BackspaceIcon
-                            onClick={clearSearchTextValue}
-                            fontSize="small"
-                            className={localClasses.icon}
-                          />
-                        </InputAdornment>
-                      ),
-                      disableUnderline: true,
-                    }}
-                    fullWidth
-                    name="search"
-                    id="search"
-                    placeholder="Type Anything"
-                    value={searchText}
-                    onChange={handleSearchTextValueChange}
-                  />
-                </FormControl>
-              </Box>
-              <Box my={1} display="flex" justifyContent="flex-end">
-                <Button
-                  onClick={() => {
-                    handleSearchModalClose(false);
-                  }}
-                  variant="outlined"
-                  color="primary"
-                  className={localClasses.button}
-                >
-                  Cancel
-                </Button>
+          <Grid item xs={12}>
+            <Box
+              height="100%"
+              width="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="flex-end"
+            >
+              <Box width="100%">
+                <form onSubmit={handleSubmit}>
+                  <Box>
+                    <FormControl fullWidth>
+                      <TextField
+                        className={localClasses.SearchTitleTextField}
+                        InputProps={{
+                          autoFocus: true,
+                          shrink: "false",
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <SearchIcon />
+                            </InputAdornment>
+                          ),
+                          endAdornment: (
+                            <InputAdornment position="start">
+                              <BackspaceIcon
+                                onClick={clearSearchTextValue}
+                                fontSize="small"
+                                className={localClasses.icon}
+                              />
+                            </InputAdornment>
+                          ),
+                          disableUnderline: true,
+                        }}
+                        fullWidth
+                        name="search"
+                        id="search"
+                        placeholder="Type Anything"
+                        value={searchText}
+                        onChange={handleSearchTextValueChange}
+                      />
+                    </FormControl>
+                  </Box>
+                  <Box my={1} display="flex" justifyContent="center">
+                    <Button
+                      onClick={() => {
+                        handleSearchModalClose(false);
+                      }}
+                      variant="outlined"
+                      color="primary"
+                      className={localClasses.button}
+                    >
+                      Cancel
+                    </Button>
 
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  disabled={searchText.length === 0}
-                  className={localClasses.button}
-                >
-                  Search Anything
-                </Button>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      disabled={searchText.length === 0}
+                      className={localClasses.button}
+                    >
+                      Search Anything
+                    </Button>
+                  </Box>
+                </form>
               </Box>
-            </form>
-          </Box>
-          <Box my={5}>
-            {/* <FreeBreakfastIcon fontSize="large" /> */}
-            <Lottie options={defaultOptions2} height={211} width={300} />
-            <Box className={localClasses.textBox}>
-              <Typography className={localClasses.text}>
-                The earth is what we all have in common
-              </Typography>
-              <Typography
-                variant="h6"
-                style={{
-                  textAlign: "center",
-                  fontWeight: "400",
-                  color: "#63bb94",
-                }}
-              >
-                Save Earth
-              </Typography>
             </Box>
-          </Box>
-        </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box
+              height="100%"
+              width="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box>
+                <Lottie options={defaultOptions2} height={211} width={300} />
+                <Box className={localClasses.textBox}>
+                  <Typography className={localClasses.text}>
+                    The earth is what we all have in common
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "400",
+                      color: "#63bb94",
+                    }}
+                  >
+                    Save Earth
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box
+              width="100%"
+              height="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="flex-end"
+            >
+              <Box>
+                <Lottie
+                  options={defaultOptions}
+                  height={150}
+                  width={150}
+                  isPaused={lottiePause}
+                />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item xl={4} lg={4} md={3} sm={2} xs={false} />
-      <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-        <Box
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          height={150}
-        >
-          <Box>
-            {/* <FreeBreakfastIcon fontSize="large" /> */}
-            <Lottie
-              options={defaultOptions}
-              height={150}
-              width={150}
-              isPaused={lottiePause}
-            />
-          </Box>
-        </Box>
-      </Grid>
     </Grid>
   );
 };
 export default withWidth()(
   withStyles(
     (theme) => ({
-      //   ...(theme)
       ...ThemeDistributor(theme),
     }),
     { withTheme: true }
